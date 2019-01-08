@@ -1,4 +1,4 @@
-page-tshirts {
+page-list {
   ion-content {
 
     &:before {
@@ -6,7 +6,7 @@ page-tshirts {
         position: fixed;
         display: block;
         width: 100%;
-        height: 100%;
+        height: 105%;
         background-image: url('../../assets/imgs/bg-pattern.jpg');
         top: -2rem; 
         right: 0;
@@ -16,6 +16,12 @@ page-tshirts {
     ion-list {
         margin-bottom: 1rem;
         
+        .imgIcon {
+            background-repeat: no-repeat;
+            background-size: 2000% 2000%;
+            background-position: center;
+        }
+
         .item-wrapper.active-slide .item-md {
             background: #fff;
         }

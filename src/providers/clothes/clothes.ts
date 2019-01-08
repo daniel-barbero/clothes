@@ -22,12 +22,12 @@ export class ClothesProvider {
   }
 
   updateClothes(id:number, clothes:Clothes){
-      return this.http.put(APPCONFIG.API+'/update/'+id, clothes).map(response => response.json())
+      return this.http.put(APPCONFIG.API+'update/'+id, clothes).map(response => response.json())
       .catch((error:any) => Observable.throw(error || 'server error'));
   }
 
   createClothes(clothes:Clothes){
-      return this.http.post(APPCONFIG.API+'/create', clothes).map(response => response.json())
+      return this.http.post(APPCONFIG.API+'create', clothes).map(response => response.json())
       .catch((error:any) => Observable.throw(error || 'server error'));
   }
 

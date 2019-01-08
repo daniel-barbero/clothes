@@ -9,7 +9,7 @@ import { MyApp } from './app.component';
 
 // PAGES
 import { HomePage } from '../pages/home/home';
-import { TshirtsPage } from '../pages/tshirts/tshirts';
+import { ListPage } from '../pages/list/list';
 import { EditionPage } from '../pages/edition/edition';
 import { DetailPage } from '../pages/detail/detail';
 
@@ -17,16 +17,18 @@ import { DetailPage } from '../pages/detail/detail';
 import { ClothesProvider } from '../providers/clothes/clothes';
 
 // PIPES
-import { PipesModule } from './../pipes/pipes.module';
+import { PipesModule } from '../pipes/pipes.module';
 
 // PLUGINS
-
+import { Camera } from '@ionic-native/camera';
+import { FileTransfer} from '@ionic-native/file-transfer';
+import { FilePath } from '@ionic-native/file-path';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    TshirtsPage,
+    ListPage,
     DetailPage,
     EditionPage
   ],
@@ -40,7 +42,7 @@ import { PipesModule } from './../pipes/pipes.module';
   entryComponents: [
     MyApp,
     HomePage,
-    TshirtsPage,
+    ListPage,
     DetailPage,
     EditionPage
   ],
@@ -48,7 +50,10 @@ import { PipesModule } from './../pipes/pipes.module';
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    ClothesProvider
+    ClothesProvider,
+    Camera,
+    FilePath,
+    FileTransfer
   ]
 })
 export class AppModule {}

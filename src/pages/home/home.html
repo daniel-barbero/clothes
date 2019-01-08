@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Clothes</ion-title>
+    <ion-title>My Clothes</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -8,44 +8,60 @@
     <ion-grid>
       <ion-row>
           <ion-col col-6>
-            <ion-item (click)="goToPage('tshirts')">
-                <img [src]="urlImg + 'noImg.png'" item-content />
-            </ion-item>
-            <p text-center>T-shirts</p>
+              <div>
+                  <ion-item (click)="goToPage('list', 'camisa')">
+                      <img [src]="urlImg + 'shirt.png'" item-content />
+                  </ion-item>
+                  <p text-center class="colorTertiary">Camisas</p> 
+              </div>
           </ion-col>
+
           <ion-col col-6>
-            <ion-item (click)="goToPage('tshirts')">
-                <img [src]="urlImg + 'noImg.png'" item-content />
-            </ion-item>      
-            <p text-center>Pants</p>      
+            <div>
+              <ion-item (click)="goToPage('list', 'pantalon')">
+                  <img [src]="urlImg + 'pant.png'" item-content />
+              </ion-item>      
+              <p text-center class="colorTertiary">Pantalones</p>          
+            </div>    
+          </ion-col>
+
+      </ion-row>
+      <ion-row>
+          <ion-col col-6>
+            <div>
+                <ion-item (click)="goToPage('list', 'chaqueta')">
+                    <img [src]="urlImg + 'jacket.png'" item-content />
+                </ion-item>
+                <p text-center class="colorTertiary">Chaquetas</p>              
+            </div>
+          </ion-col>
+
+          <ion-col col-6>
+            <div>
+                <ion-item (click)="goToPage('list','accesorios')">
+                    <img [src]="urlImg + 'accesories.png'" item-content />
+                </ion-item>
+                <p text-center class="colorTertiary">Accesorios</p>                 
+            </div>
           </ion-col>
       </ion-row>
       <ion-row>
           <ion-col col-6>
-            <ion-item (click)="goToPage('tshirts')">
-                <img [src]="urlImg + 'noImg.png'" item-content />
-            </ion-item>
-            <p text-center>Jacket</p>
+            <div>
+                <ion-item (click)="goToPage('list', 'zapatos')">
+                    <img [src]="urlImg + 'shoes.png'" item-content />    
+                </ion-item>
+                <p text-center class="colorTertiary">Zapatos</p>              
+            </div>
           </ion-col>
+
           <ion-col col-6>
-            <ion-item (click)="goToPage('tshirts')">
-                <img [src]="urlImg + 'noImg.png'" item-content />
-            </ion-item>
-            <p text-center>Accesories</p>   
-          </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col col-6>
-            <ion-item (click)="goToPage('tshirts')">
-                <img [src]="urlImg + 'noImg.png'" item-content />    
-            </ion-item>
-            <p text-center>Shoes</p>
-          </ion-col>
-          <ion-col col-6>
-            <ion-item (click)="goToPage('tshirts')">
-                <img [src]="urlImg + 'noImg.png'" item-content />
-            </ion-item>   
-            <p text-center>New clothes</p>         
+            <div>
+                <ion-item (click)="goToPage('edition', '0')">
+                    <img [src]="urlImg + 'new.png'" item-content />
+                </ion-item>   
+                <p text-center class="colorTertiary">Nueva prenda</p>                
+            </div>
           </ion-col>
       </ion-row>
     </ion-grid>

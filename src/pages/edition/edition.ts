@@ -6,9 +6,8 @@ import { NgForm } from '@angular/forms';
 import { ClothesProvider } from '../../providers/clothes/clothes';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
-import { FilePath } from '../../../node_modules/@ionic-native/file-path';
+import { FilePath } from '@ionic-native/file-path';
 import { Clothes } from '../../models/clothes.model';
-
 
 @Component({
   selector: 'page-edition',
@@ -39,6 +38,7 @@ export class EditionPage implements OnInit {
 
   ngOnInit() {
       console.log('OnInit EditionPage');
+      console.log(this.navParams.data);
       this.clothes = this.navParams.data;
       this.dataurl = this.urlImg + 'noImg.png';
 
@@ -140,7 +140,7 @@ export class EditionPage implements OnInit {
   }
 
   saveClothes(form: NgForm){
-      console.log('saveRecipe function: ' + form.value);
+      console.log('saveRecipe function: ' + form.value.colour);
       this.clothes = form.value;
 
       if (form.value.id == 0){
@@ -173,7 +173,7 @@ export class EditionPage implements OnInit {
               else {
                   APPCONFIG.reloadList = true;
                   if (this.editionImage){
-                      this.uploadFile()
+                      this.uploadFile();
                   }
                   else {
                       this.onAlertSuccess(result.substring(result.lastIndexOf(':')+2, result.lastIndexOf('"')));

@@ -1,3 +1,31 @@
 page-detail {
+    .imgMain {
+        width: 18rem;
+        display: block;
+        margin: 0 auto;
+    }
 
+    .imgDetail {
+        width: 8rem;
+        height: 8rem;
+        position: absolute;
+        top: 10rem;
+        right: 2rem;
+        border: 1px solid #ccc;
+        overflow: hidden;
+
+        img {
+            max-width: initial;
+            width: 40rem;
+            margin-top: -20rem;
+            margin-left: -20rem;
+        }
+    }
+
+    .item-md.item-block .item-inner {
+        border-bottom: none;
+        .badge-md:not(.badge-md-secondary) {
+            padding: 1rem;
+        }
+    }
 }

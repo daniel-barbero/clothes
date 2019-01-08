@@ -2,7 +2,8 @@ import { APPCONFIG } from './../../app/config';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-import { TshirtsPage } from './../tshirts/tshirts';
+import { ListPage } from './../list/list';
+import { EditionPage } from '../edition/edition';
 
 @Component({
   selector: 'page-home',
@@ -10,40 +11,24 @@ import { TshirtsPage } from './../tshirts/tshirts';
 })
 export class HomePage {
     
-    public urlImg = APPCONFIG.URL_IMG; 
+    public urlImg = './assets/imgs/'; 
     
     constructor(public navCtrl: NavController) {
 
     }
 
     // Buttons goToPage
-    goToPage(namePage) {
+    goToPage(namePage, category) {
       switch (namePage){
 
-          case 'tshirts':
-          this.navCtrl.push(TshirtsPage);
-          break;
-          /*
-          case 'pants':
-          this.navCtrl.push(Pants);
-          break;
-
-          case 'jackets':
-          this.navCtrl.push(Jackets);
+          case 'list':
+          this.navCtrl.push(ListPage, {category: category});
           break;
           
-          case 'accesories':
-          this.navCtrl.push(Accesories);
+          case 'edition':
+          this.navCtrl.push(EditionPage, {id: 0});
           break;
-
-          case 'shoes':
-          this.navCtrl.push(Shoes);
-          break;
-
-          case 'new':
-          this.navCtrl.push(NewElement);
-          break;
-          */
+          
       }
     }
 }

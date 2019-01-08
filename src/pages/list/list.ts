@@ -11,22 +11,25 @@ import { Clothes } from '../../models/clothes.model';
 
 
 @Component({
-  selector: 'page-tshirts',
-  templateUrl: 'tshirts.html',
+  selector: 'page-list',
+  templateUrl: 'list.html',
 })
-export class TshirtsPage {
+export class ListPage {
   public urlImg = APPCONFIG.URL_IMG; 
   private listClothes = [];
-  reActiveInfinite: any;
+  public category: string;
 
   constructor( private loadingController: LoadingController,
               public navCtrl: NavController, 
+              private navParams: NavParams,
               private clothesProvider: ClothesProvider,
               private alertCtrl : AlertController) {
+
   }
 
   ionViewWillEnter() {
-      console.log('ionViewWillEnter TshirtsPage');
+      console.log('ionViewWillEnter ListPage');
+      this.category = this.navParams.data.category;
       this.onLoadData();
   }
 
@@ -39,7 +42,7 @@ export class TshirtsPage {
       });
       loadingSpinner.present();
       
-      this.clothesProvider.getClothes('camisa')
+      this.clothesProvider.getClothes(this.category)
       .subscribe(
           result => {
               if (typeof result === 'string'){

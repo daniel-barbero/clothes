@@ -3,17 +3,30 @@
 </ion-header>
 
 <ion-content>
-    <img [src]="urlImg + clothes.img" />
-    <img [src]="urlImg + clothes.img" class="imgDetail" />
-    <ion-badge style="background-color: '{{ clothes.colour }}'"></ion-badge>
+    <img [src]="urlImg + clothes.img" class="imgMain" />
+    <div class="imgDetail">
+        <img [src]="urlImg + clothes.img"  />
+    </div>
+    
 
     <ion-item>
-        <p class="font-book colorSecondary">{{ clothes.description }}</p>
+        <p class="font-bold colorSecondary" margin-bottom>
+            <ion-badge color="secondary">{{ clothes.colour }}</ion-badge>
+            {{ clothes.description }}
+        </p>
         <ion-badge color="primary">{{ clothes.brand }}</ion-badge>
-        <ion-badge color="secondary">{{ clothes.store }}</ion-badge>  
+        <ion-badge color="tertiary">{{ clothes.store }}</ion-badge>  
 
-        <p>Talla: {{ clothes.size }}</p>
+        
         <ion-icon name="star" item-end>{{ clothes.state }}</ion-icon> 
-        <button ion-button item-end [navPush]="EditionPage" [navParams]="clothes">Editar</button>
+
+        <p margin-top>Talla: {{ clothes.size }}</p>
+        
     </ion-item>
+
+    
 </ion-content>
+
+<ion-footer>
+    <button ion-button block [navPush]="EditionPage" [navParams]="clothes">Editar</button>
+</ion-footer>

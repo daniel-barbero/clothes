@@ -1,3 +1,50 @@
 page-tshirts {
+  ion-content {
 
+    &:before {
+        content: '';
+        position: fixed;
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-image: url('../../assets/imgs/bg-pattern.jpg');
+        top: -2rem; 
+        right: 0;
+        opacity: .06;
+    }
+
+    ion-list {
+        margin-bottom: 1rem;
+        
+        .item-wrapper.active-slide .item-md {
+            background: #fff;
+        }
+
+        .item-md {
+            padding-left: 0;
+
+            ion-avatar[item-start] {
+                margin-top: 0;
+                margin-bottom: 0;
+
+                div, img {
+                    width: 7rem;
+                    height: 7rem;
+                    border-radius: 0;
+                    margin: .075rem;                    
+                }
+            }
+
+            ion-label {
+                font-size: 1.4rem;
+                line-height: 1.6rem;
+            }
+
+            ion-icon[item-end] {
+                margin: 0;
+            }
+        } 
+    }
+ 
+  }
 }

@@ -1,0 +1,69 @@
+<ion-header>
+  <ion-navbar><ion-title>{{ literalTitle }} prenda</ion-title></ion-navbar>
+</ion-header>
+
+<ion-content padding-bottom padding-horizontal>
+  <ion-img [src]="dataurl"></ion-img>
+
+  <button (click)="openSelectorImage()" ion-button class="btnRound">
+      <ion-icon name="ios-camera"></ion-icon>
+  </button>
+  <p class="smallFont">Recuerda "Editar prenda" para modificar la imagen.</p>
+
+  <form #f="ngForm" (ngSubmit)="saveClothes(f)" padding-horizontal>
+    <ion-list>
+        <ion-input type="hidden" [(ngModel)]="clothes.id" name="id"></ion-input>
+
+        <ion-item>
+          <ion-label stacked>Categoria</ion-label>
+          <ion-select name="category" [(ngModel)]="clothes.category">
+            <ion-option value="camisa">Camisa</ion-option>
+            <ion-option value="pantalon">Pantalones</ion-option>
+            <ion-option value="chaqueta">Chaqueta</ion-option>
+            <ion-option value="accesorios">Accesorios</ion-option>
+            <ion-option value="zapatos">Zapatos</ion-option>
+          </ion-select>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Descripción</ion-label>
+          <ion-input type="text" [(ngModel)]="clothes.description" name="description" placeholder="Descripción" required></ion-input>
+        </ion-item>
+        
+        <input type="hidden" name="img" [(ngModel)]="clothes.img" />
+
+        <ion-item>
+          <ion-label stacked>Marca</ion-label>
+          <ion-input type="text" [(ngModel)]="clothes.brand" name="brand" placeholder="Marca" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Tienda</ion-label>
+          <ion-input type="text" [(ngModel)]="clothes.store" name="store" placeholder="Marca" required></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label stacked>Estado&nbsp;&nbsp;&nbsp;<ion-badge>{{ clothes.state }}</ion-badge></ion-label>
+          <ion-range min="1" max="4" [(ngModel)]="clothes.state" name="state" color="secondary">
+              <ion-label range-left>1</ion-label>
+              <ion-label range-right>4</ion-label>
+          </ion-range>
+          <span>1:Deficiente - 2:Regular - 3:Bueno - 4:Nuevo</span>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Talla &nbsp;&nbsp;&nbsp;<ion-badge>{{ clothes.size }}</ion-badge></ion-label>
+          <ion-input type="text" [(ngModel)]="clothes.size" name="size" placeholder="Talla" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label stacked>Color &nbsp;&nbsp;&nbsp;<ion-badge>{{ clothes.colour }}</ion-badge></ion-label>
+          <ion-input type="text" [(ngModel)]="clothes.colour" name="colour" placeholder="Color" required></ion-input>
+        </ion-item>
+
+    </ion-list>
+
+    <button ion-button block type="submit" color="primary" [disabled]="!f.valid">{{ literal }} Prenda</button>
+  </form>
+
+</ion-content>

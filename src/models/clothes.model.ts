@@ -8,7 +8,6 @@ export interface ClothesInterface {
     colour: string;
     state: string;
     img: string;
-    imgdetail: string;
 }
 
 export class Clothes implements ClothesInterface {
@@ -21,8 +20,6 @@ export class Clothes implements ClothesInterface {
     private _colour = '';
     private _state = '';
     private _img = '';
-    private _imgdetail = '';
-
 
     get id(): string { return this._id; }
     set id(id: string) { this._id = (id != null) ? id : ""; }
@@ -51,9 +48,6 @@ export class Clothes implements ClothesInterface {
     get img(): string { return this._img; }
     set img(img: string) { this._img = (img != null) ? img : ""; }
 
-    get imgdetail(): string { return this._imgdetail; }
-    set imgdetail(imgdetail: string) { this._imgdetail = (imgdetail != null) ? imgdetail : ""; }
-
     constructor(
         id?: string,
         description?: string,
@@ -64,7 +58,6 @@ export class Clothes implements ClothesInterface {
         colour?: string,
         state?: string,
         img?: string,
-        imgdetail?: string,
     ){
         this.id = id;
         this.description = description;
@@ -75,7 +68,6 @@ export class Clothes implements ClothesInterface {
         this.colour = colour;
         this.state = state;
         this.img = img;
-        this.imgdetail = imgdetail;
     }
 
 }

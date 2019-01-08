@@ -10,9 +10,14 @@ import { MyApp } from './app.component';
 // PAGES
 import { HomePage } from '../pages/home/home';
 import { TshirtsPage } from '../pages/tshirts/tshirts';
+import { EditionPage } from '../pages/edition/edition';
+import { DetailPage } from '../pages/detail/detail';
 
 // PROVIDERS
 import { ClothesProvider } from '../providers/clothes/clothes';
+
+// PIPES
+import { PipesModule } from './../pipes/pipes.module';
 
 // PLUGINS
 
@@ -21,18 +26,23 @@ import { ClothesProvider } from '../providers/clothes/clothes';
   declarations: [
     MyApp,
     HomePage,
-    TshirtsPage
+    TshirtsPage,
+    DetailPage,
+    EditionPage
   ],
   imports: [
     HttpModule,
     BrowserModule,
+    PipesModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
     HomePage,
-    TshirtsPage
+    TshirtsPage,
+    DetailPage,
+    EditionPage
   ],
   providers: [
     StatusBar,

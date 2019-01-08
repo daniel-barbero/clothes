@@ -9,13 +9,12 @@ import { TshirtsPage } from './../tshirts/tshirts';
   templateUrl: 'home.html'
 })
 export class HomePage {
-
-    public noImg = "../../assets/imgs/noImg.png";
+    
+    public urlImg = APPCONFIG.URL_IMG; 
     
     constructor(public navCtrl: NavController) {
 
     }
-
 
     // Buttons goToPage
     goToPage(namePage) {

@@ -1,19 +1,22 @@
+import { APPCONFIG } from './../../app/config';
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController, ItemSliding } from 'ionic-angular';
+
+import { DetailPage } from '../detail/detail';
+import { EditionPage } from '../edition/edition';
 
 import { ClothesProvider } from '../../providers/clothes/clothes';
 
 import { Clothes } from '../../models/clothes.model';
+
 
 @Component({
   selector: 'page-tshirts',
   templateUrl: 'tshirts.html',
 })
 export class TshirtsPage {
-
-  private page: number = -1;
+  public urlImg = APPCONFIG.URL_IMG; 
   private listClothes = [];
-  public urlImg = "http://clothes.danielbarbero.es/img/";
   reActiveInfinite: any;
 
   constructor( private loadingController: LoadingController,
@@ -24,21 +27,19 @@ export class TshirtsPage {
 
   ionViewWillEnter() {
       console.log('ionViewWillEnter TshirtsPage');
-      this.onLoadData('all');
+      this.onLoadData();
   }
 
-  onLoadData(limit?) {
+  onLoadData() {
       console.log('onLoadData FUNCTION: ');
       this.listClothes = [];
-      this.page = ( limit == 'all')? 9999 : 0;
-      console.log(limit);
       
       let loadingSpinner = this.loadingController.create({
         content: "Cargando"
       });
       loadingSpinner.present();
       
-      this.clothesProvider.getClothes(this.page)
+      this.clothesProvider.getClothes('camisa')
       .subscribe(
           result => {
               if (typeof result === 'string'){
@@ -57,8 +58,7 @@ export class TshirtsPage {
                                                 element.category,
                                                 element.colour,
                                                 element.state, 
-                                                element.img,
-                                                element.imgdetail));
+                                                element.img));
                     }
                   );
                   loadingSpinner.dismiss();
@@ -70,6 +70,44 @@ export class TshirtsPage {
               this.onAlertError(error);
           }
       );
+  }
+
+  onEditionClothes(clothes: Clothes, slidingItem: ItemSliding) {
+      slidingItem.close();
+      this.navCtrl.push(EditionPage, clothes);
+  }
+
+  detailClothes(clothes: Clothes) {
+      this.navCtrl.push(DetailPage, clothes);
+  }
+
+  onAlertDelete(idRecipe) {
+      const alert = this.alertCtrl.create({
+          title: 'Borrar receta',
+          message: '¿Estás seguro de que quieres borrar esta receta?',
+          buttons: [
+              {
+              text: 'Ok',
+              handler: () => {
+                  this.clothesProvider.deleteClothes(idRecipe).subscribe(
+                    result => {
+                      if (result.includes('error')){
+                          this.onAlertError(result.substring(result.lastIndexOf(':')+2, result.lastIndexOf('"')));
+                      }
+                      else {
+                          this.onAlertSuccess(result.substring(result.lastIndexOf(':')+2, result.lastIndexOf('"')));
+                      }    
+                    });
+              }
+              },
+              {
+                text: 'Cancelar',
+                role: 'cancel'
+              }
+          ]
+      });
+
+      alert.present();
   }
 
   onAlertError(error) {

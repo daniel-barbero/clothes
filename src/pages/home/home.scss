@@ -1,6 +1,9 @@
 page-home {
     .item-md.item-block {
         padding-left: 0;
+        .label-md {
+          display: none;
+        }
         .item-inner {
             padding-right: 0;
         }

@@ -6,9 +6,7 @@ import { DetailPage } from '../detail/detail';
 import { EditionPage } from '../edition/edition';
 
 import { ClothesProvider } from '../../providers/clothes/clothes';
-
 import { Clothes } from '../../models/clothes.model';
-
 
 @Component({
   selector: 'page-list',
@@ -84,15 +82,15 @@ export class ListPage {
       this.navCtrl.push(DetailPage, clothes);
   }
 
-  onAlertDelete(idRecipe) {
+  onAlertDelete(idClothes) {
       const alert = this.alertCtrl.create({
-          title: 'Borrar receta',
-          message: '¿Estás seguro de que quieres borrar esta receta?',
+          title: 'Borrar prenda',
+          message: '¿Estás seguro de que quieres borrar esta prenda?',
           buttons: [
               {
               text: 'Ok',
               handler: () => {
-                  this.clothesProvider.deleteClothes(idRecipe).subscribe(
+                  this.clothesProvider.deleteClothes(idClothes).subscribe(
                     result => {
                       if (result.includes('error')){
                           this.onAlertError(result.substring(result.lastIndexOf(':')+2, result.lastIndexOf('"')));

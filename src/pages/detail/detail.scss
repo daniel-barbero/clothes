@@ -1,31 +1,52 @@
 page-detail {
-    .imgMain {
-        width: 18rem;
-        display: block;
-        margin: 0 auto;
+  
+    .scroll-content {
+        background-color: #f3f3f3;
     }
 
-    .imgDetail {
-        width: 8rem;
-        height: 8rem;
-        position: absolute;
-        top: 10rem;
-        right: 2rem;
-        border: 1px solid #ccc;
-        overflow: hidden;
+    .frameImg {
+        min-height: 20rem;
 
-        img {
-            max-width: initial;
-            width: 40rem;
-            margin-top: -20rem;
-            margin-left: -20rem;
+        .imgMain {
+            width: 18rem;
+            display: block;
+            margin: 0 auto;
         }
+
+        .imgDetail {
+            width: 10rem;
+            height: 10rem;
+            position: absolute;
+            top: 7rem;
+            right: 1rem;
+            border: 1px solid $color-theme4;
+            overflow: hidden;
+
+            img {
+                max-width: initial;
+                width: 40rem;
+                margin-top: -17rem;
+                margin-left: -17rem;
+            }
+        }      
     }
 
-    .item-md.item-block .item-inner {
-        border-bottom: none;
-        .badge-md:not(.badge-md-secondary) {
-            padding: 1rem;
+
+    .item-md.item-block {
+        background-color: #fff;
+        
+        .item-inner {
+            border-bottom: none;
+
+            .badge-md:not(.badge-md-secondary) {
+                padding: 1rem;
+            }
+
+            ion-icon {
+                font-size: 1.5rem;
+                margin-top: 2rem;  
+            }
+            
         }
     }
 }

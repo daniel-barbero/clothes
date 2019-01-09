@@ -21,6 +21,11 @@ export class ClothesProvider {
       .catch((error:any) => Observable.throw(error || 'server error'));
   }
 
+  getClothesFilter(category:string, textCategory:string): Observable<any>{
+      return this.http.get(APPCONFIG.API+'getClothesFilter/'+category+'&'+textCategory).map(response => response.json())
+      .catch((error:any) => Observable.throw(error || 'server error'));
+  }
+
   updateClothes(id:number, clothes:Clothes){
       return this.http.put(APPCONFIG.API+'update/'+id, clothes).map(response => response.json())
       .catch((error:any) => Observable.throw(error || 'server error'));

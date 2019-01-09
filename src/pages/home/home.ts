@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 
 import { ListPage } from './../list/list';
 import { EditionPage } from '../edition/edition';
+import { FilterPage } from '../filter/filter';
 
 @Component({
   selector: 'page-home',
@@ -27,6 +28,10 @@ export class HomePage {
           
           case 'edition':
           this.navCtrl.push(EditionPage, {id: 0});
+          break;
+
+          case 'filter':
+          this.navCtrl.push(FilterPage);
           break;
           
       }

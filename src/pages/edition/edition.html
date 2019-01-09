@@ -20,6 +20,7 @@
             <ion-option value="camisa">Camisa</ion-option>
             <ion-option value="pantalon">Pantalones</ion-option>
             <ion-option value="chaqueta">Chaqueta</ion-option>
+            <ion-option value="jersey">Jerseys</ion-option>
             <ion-option value="accesorios">Accesorios</ion-option>
             <ion-option value="zapatos">Zapatos</ion-option>
           </ion-select>
@@ -43,9 +44,9 @@
         </ion-item>
         
         <ion-item>
-          <ion-label stacked>Estado</ion-label>
-          <ion-range min="1" max="4" [(ngModel)]="clothes.state" name="state" color="tertiary" item-content>
-              <ion-label range-left>1</ion-label>
+          <ion-label stacked>Estado {{ clothes.state }}</ion-label>
+          <ion-range min="0" max="4" [(ngModel)]="clothes.state" name="state" color="tertiary" item-content>
+              <ion-label range-left>0</ion-label>
               <ion-label range-right>4</ion-label>
           </ion-range> 
         </ion-item>
@@ -58,7 +59,19 @@
 
         <ion-item>
           <ion-label stacked>Color &nbsp;&nbsp;&nbsp;</ion-label>
-          <ion-input type="text" [(ngModel)]="clothes.colour" name="colour" placeholder="Color" required></ion-input>
+          <ion-select name="colour" [(ngModel)]="clothes.colour" required>
+            <ion-option value="white">Blanco</ion-option>
+            <ion-option value="red">Rojo</ion-option>
+            <ion-option value="blue">Azul</ion-option>
+            <ion-option value="grey">Gris</ion-option>
+            <ion-option value="green">Verde</ion-option>
+            <ion-option value="yellow">Amarillo</ion-option>
+            <ion-option value="purple">Púrpura</ion-option>
+            <ion-option value="pink">Rosa</ion-option>
+            <ion-option value="brown">Marrón</ion-option>
+            <ion-option value="orange">Naranja</ion-option>
+            <ion-option value="black">Negro</ion-option>
+          </ion-select>
         </ion-item>
 
     </ion-list>

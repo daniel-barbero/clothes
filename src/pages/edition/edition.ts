@@ -128,7 +128,7 @@ export class EditionPage implements OnInit {
     
       const fileTransfer: FileTransferObject = this.transfer.create();
       // Use the FileTransfer to upload the image
-      fileTransfer.upload(this.objectImgSelected, 'http://recetas.danielbarbero.es/api/public/index.php/api/v1/uploadImage/', options)
+      fileTransfer.upload(this.objectImgSelected, 'http://clothes.danielbarbero.es/public/index.php/api/v1/uploadImage/', options)
       .then(data => {
           console.log('uploadFile ----- ' + data );
           loader.dismiss();

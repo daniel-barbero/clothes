@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { HomePage } from '../pages/home/home';
 import { EditionPage } from '../pages/edition/edition';
+import { FilterPage } from './../pages/filter/filter';
 
 @Component({
   templateUrl: 'app.html'
@@ -25,6 +26,7 @@ export class MyApp {
 
         this.pages = [
           { title: 'Home', component: HomePage, icon: 'home'},
+          { title: 'Filtro', component: FilterPage, icon: 'search'},
           { title: 'Nueva Prenda', component: EditionPage, icon: 'add-circle'}
       ];
   }

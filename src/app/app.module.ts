@@ -12,6 +12,7 @@ import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 import { EditionPage } from '../pages/edition/edition';
 import { DetailPage } from '../pages/detail/detail';
+import { FilterPage } from './../pages/filter/filter';
 
 // PROVIDERS
 import { ClothesProvider } from '../providers/clothes/clothes';
@@ -30,7 +31,8 @@ import { FilePath } from '@ionic-native/file-path';
     HomePage,
     ListPage,
     DetailPage,
-    EditionPage
+    EditionPage,
+    FilterPage
   ],
   imports: [
     HttpModule,
@@ -44,7 +46,8 @@ import { FilePath } from '@ionic-native/file-path';
     HomePage,
     ListPage,
     DetailPage,
-    EditionPage
+    EditionPage,
+    FilterPage
   ],
   providers: [
     StatusBar,

@@ -3,28 +3,23 @@
 </ion-header>
 
 <ion-content>
-    <img [src]="urlImg + clothes.img" class="imgMain" />
-    <div class="imgDetail">
-        <img [src]="urlImg + clothes.img"  />
+    <div class="frameImg">
+        <img [src]="urlImg + clothes.img" class="imgMain" />
+        <div class="imgDetail">
+            <img [src]="urlImg + clothes.img"  />
+        </div>
     </div>
-    
 
-    <ion-item>
-        <p class="font-bold colorSecondary" margin-bottom>
-            <ion-badge color="secondary">{{ clothes.colour }}</ion-badge>
-            {{ clothes.description }}
-        </p>
+    <ion-item margin-top>
+        <p class="font-bold colorSecondary" margin-bottom>{{ clothes.description }}</p>
         <ion-badge color="primary">{{ clothes.brand }}</ion-badge>
         <ion-badge color="tertiary">{{ clothes.store }}</ion-badge>  
 
-        
-        <ion-icon name="star" item-end>{{ clothes.state }}</ion-icon> 
+        <ion-badge color="secondary" item-end>{{ clothes.colour }}</ion-badge>
+        <ion-icon name="star" color="secondary" item-end>{{ clothes.state }}</ion-icon> 
 
-        <p margin-top>Talla: {{ clothes.size }}</p>
-        
+        <p margin-top>Talla: <span class="font-bold">{{ clothes.size }}</span></p>
     </ion-item>
-
-    
 </ion-content>
 
 <ion-footer>

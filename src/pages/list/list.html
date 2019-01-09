@@ -19,12 +19,10 @@ se<ion-header>
                     </ng-template>                  
                 </ion-avatar>
                 
-                <ion-label text-wrap>{{ clothes.brand }}
-                    <ion-badge color="secondary">{{ clothes.colour }}</ion-badge>
-                    <span class="block colorTertiary">{{ clothes.store }}</span>
-                </ion-label>
+                <ion-label text-wrap>{{ clothes.brand }}<span class="block colorTertiary">{{ clothes.store }}</span></ion-label>
                 
                 <div item-content>
+                    <ion-badge color="secondary" item-end>{{ clothes.colour }}</ion-badge>
                     <ng-container *ngIf="clothes.state != ''; else SCnote">
                       <ng-container *ngFor="let star of clothes.state | times">
                           <ion-icon name="star" color="tertiary" item-end></ion-icon>  

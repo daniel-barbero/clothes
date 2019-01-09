@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Filtrar resultados</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form #f="ngForm" (ngSubmit)="applyFilter(f)" ion-grid no-padding margin-bottom>
+      <ion-row>
+        <ion-col col-50>
+            <ion-item>
+                  <ion-label>Criterio</ion-label>
+                  <ion-select name="filter" [(ngModel)]="filter">
+                    <ion-option value="brand">Marca</ion-option>
+                    <ion-option value="store">Tienda</ion-option>
+                    <ion-option value="colour">Color</ion-option>
+                  </ion-select>
+            </ion-item>        
+        </ion-col>
+        <ion-col col-50>
+            <ion-item>
+                <ion-input type="text" [(ngModel)]="filterText" name="filterText" placeholder="Criterio" required></ion-input>
+            </ion-item>
+        </ion-col>
+      </ion-row>
+      <button ion-button block type="submit" color="primary" [disabled]="!f.valid">Aplicar filtro</button>
+  </form>
+
+  <ion-list padding-top [virtualScroll]="listClothes !== ''? listClothes : []" approxItemHeight="70px">
+      <ion-item-sliding *virtualItem="let clothes" #slidingItem>
+          <ion-item (click)="detailClothes(clothes)">
+              <ion-avatar item-start>
+                  <ng-container *ngIf="clothes.imgdetail !='' && clothes.imgdetail !== 'NULL'; else defaultImg">
+                      <div [ngStyle]="{'background-image': 'url(' + urlImg + clothes.img + ')'}" class="imgIcon">
+                      </div>
+                  </ng-container>
+                  <ng-template #defaultImg>
+                      <img [src]="urlImg + '/noImg.png'" />
+                  </ng-template>                  
+              </ion-avatar>
+              
+              <ion-label text-wrap>{{ clothes.brand }}
+                  <ion-badge color="secondary">{{ clothes.colour }}</ion-badge>
+                  <span class="block colorTertiary">{{ clothes.store }}</span>
+              </ion-label>
+              
+              <div item-content>
+                  <ng-container *ngIf="clothes.state != ''; else SCnote">
+                    <ng-container *ngFor="let star of clothes.state | times">
+                        <ion-icon name="star" color="tertiary" item-end></ion-icon>  
+                    </ng-container>                
+                  </ng-container>
+                  <ng-template #SCnote>
+                      <ion-badge item-end>SC</ion-badge>
+                  </ng-template>
+              </div>
+          </ion-item>
+
+          <ion-item-options side="right">
+              <button ion-button color="tertiary" (click)="onEditionClothes(clothes, slidingItem)">
+                  <ion-icon name="create"></ion-icon> Editar
+                </button>
+              <button ion-button color="danger" (click)="onAlertDelete(clothes.id)">
+                  <ion-icon name="trash"></ion-icon> Borrar
+              </button>
+          </ion-item-options>
+          
+      </ion-item-sliding>
+  </ion-list>
+
+</ion-content>

@@ -1,5 +1,13 @@
 page-home {
 
+    ion-header img {
+        width: 3rem;
+        margin-left: 1rem;
+        background: #fff;
+        border-radius: .3rem;
+        border: 1px solid $color-theme4;
+    }
+
     ion-content {
         &:before {
             content: '';

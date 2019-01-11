@@ -24,6 +24,7 @@ import { PipesModule } from '../pipes/pipes.module';
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer} from '@ionic-native/file-transfer';
 import { FilePath } from '@ionic-native/file-path';
+import { ImageResizer } from '@ionic-native/image-resizer';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { FilePath } from '@ionic-native/file-path';
     ClothesProvider,
     Camera,
     FilePath,
-    FileTransfer
+    FileTransfer,
+    ImageResizer
   ]
 })
 export class AppModule {}

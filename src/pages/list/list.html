@@ -4,7 +4,7 @@ se<ion-header>
 
 <ion-content>
 
-    <p padding *ngIf="listClothes.length == 0">No hay elementos</p>
+    <p padding text-center *ngIf="listClothes.length == 0">No hay elementos</p>
 
     <ion-list padding-top [virtualScroll]="listClothes !== ''? listClothes : []" approxItemHeight="70px">
         <ion-item-sliding *virtualItem="let clothes" #slidingItem>

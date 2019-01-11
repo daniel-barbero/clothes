@@ -1,5 +1,8 @@
 <ion-header>
   <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>  
     <ion-title>My Clothes
         <img [src]="urlImg + 'new.png'" float-right (click)="goToPage('edition', '0')" />
         <img [src]="urlImg + 'filter.png'" float-right (click)="goToPage('filter', '0')" />

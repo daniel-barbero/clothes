@@ -86,6 +86,7 @@ export class FilterPage {
         const alert = this.alertCtrl.create({
             title: 'Borrar prenda',
             message: '¿Estás seguro de que quieres borrar esta prenda?',
+            cssClass: 'alertKO',
             buttons: [
                 {
                 text: 'Ok',
@@ -130,6 +131,7 @@ export class FilterPage {
         const alert = this.alertCtrl.create({
             title: 'Acción realizada con éxito',
             message: msg,
+            cssClass: 'alertOK',
             buttons: [
               {
                 text: 'Ok',

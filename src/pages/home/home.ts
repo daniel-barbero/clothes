@@ -1,4 +1,3 @@
-import { APPCONFIG } from './../../app/config';
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
@@ -27,7 +26,7 @@ export class HomePage {
           break;
           
           case 'edition':
-          this.navCtrl.push(EditionPage, {id: 0});
+          this.navCtrl.push(EditionPage, {id: '0'});
           break;
 
           case 'filter':

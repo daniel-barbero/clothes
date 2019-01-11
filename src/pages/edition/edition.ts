@@ -6,6 +6,7 @@ import { NgForm } from '@angular/forms';
 import { ClothesProvider } from '../../providers/clothes/clothes';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
+import { ImageResizer } from '@ionic-native/image-resizer';
 import { FilePath } from '@ionic-native/file-path';
 import { Clothes } from '../../models/clothes.model';
 
@@ -33,7 +34,8 @@ export class EditionPage implements OnInit {
               public alertCtrl: AlertController,
               private filePath: FilePath,
               private camera: Camera,
-              private transfer: FileTransfer) {
+              private transfer: FileTransfer,
+              private imageResizer: ImageResizer) {
   }
 
   ngOnInit() {
@@ -82,7 +84,6 @@ export class EditionPage implements OnInit {
 
   selectImage(sourceType:number){
       const optionsGetImage: CameraOptions = {
-          quality: 30,
           encodingType: this.camera.EncodingType.JPEG,
           mediaType: this.camera.MediaType.PICTURE,
           allowEdit: true,
@@ -90,8 +91,6 @@ export class EditionPage implements OnInit {
       }
       
       this.camera.getPicture(optionsGetImage).then((imageData) => {
-          // console.log(imageData);
-          this.objectImgSelected = imageData;
 
           this.newName = this.createFileName();
           this.clothes.img = this.newName;
@@ -100,8 +99,19 @@ export class EditionPage implements OnInit {
           this.filePath.resolveNativePath(imageData)
           .then(path => {
               // console.log(path);
-              this.dataurl = this.win.Ionic.WebView.convertFileSrc(path);
-              console.log('normalizeURL: ' + this.dataurl);
+              this.imageResizer.resize({
+                  uri: path,
+                  quality: 85,
+                  width: 1280,
+                  height: 1280
+              }).then(uri => {
+                  this.objectImgSelected = uri;
+                  //console.log(this.objectImgSelected);
+                  this.dataurl = this.win.Ionic.WebView.convertFileSrc(this.objectImgSelected);
+                  //console.log('normalizeURL: ' + this.dataurl);
+              })
+              .catch(err => console.log(err));
+
           })
           .catch(err => console.log(err));
 

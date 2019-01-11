@@ -175,9 +175,7 @@ button[ion-item] .input-cover {
 // ***************************************************************************//
 //         MODAL  
 // ***************************************************************************//
-.select-alert .alert-button-group button:nth-child(2),
-.alertOK .alert-button-group button,
-.alertKO .alert-button-group button {
+.select-alert .alert-button-group button:nth-child(2) {
   width: 6rem;
 
   .button-inner {
@@ -193,7 +191,6 @@ button[ion-item] .input-cover {
 
 .alertOK {
   .alert-title {
-    line-height: 2.4rem;
     color: $color-theme2;
   }  
   .alert-button-group button {
@@ -204,10 +201,9 @@ button[ion-item] .input-cover {
 
 .alertKO {
   .alert-title {
-    line-height: 2.4rem;
     color: color($colors, danger);
   }
-  .alert-button-group button {
+  .alert-button-group button:first-child {
     background: color($colors, danger);
     color: #fff;
   }

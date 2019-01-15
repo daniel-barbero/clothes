@@ -7,7 +7,7 @@ import { ClothesProvider } from '../../providers/clothes/clothes';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { FileTransfer, FileUploadOptions, FileTransferObject } from '@ionic-native/file-transfer';
 import { ImageResizer } from '@ionic-native/image-resizer';
-import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
 import { Clothes } from '../../models/clothes.model';
 
 @Component({
@@ -16,6 +16,7 @@ import { Clothes } from '../../models/clothes.model';
 })
 
 export class EditionPage implements OnInit {
+
   public clothes: Clothes;
   public urlImg = APPCONFIG.URL_IMG;
   public dataurl: string;
@@ -32,8 +33,8 @@ export class EditionPage implements OnInit {
               private clothesProvider: ClothesProvider,
               public actionSheetCtrl: ActionSheetController,
               public alertCtrl: AlertController,
-              private filePath: FilePath,
               private camera: Camera,
+              private file: File,
               private transfer: FileTransfer,
               private imageResizer: ImageResizer) {
   }
@@ -83,6 +84,7 @@ export class EditionPage implements OnInit {
   }
 
   selectImage(sourceType:number){
+
       const optionsGetImage: CameraOptions = {
           encodingType: this.camera.EncodingType.JPEG,
           mediaType: this.camera.MediaType.PICTURE,
@@ -95,25 +97,21 @@ export class EditionPage implements OnInit {
           this.newName = this.createFileName();
           this.clothes.img = this.newName;
           this.editionImage = true;
-          
-          this.filePath.resolveNativePath(imageData)
-          .then(path => {
-              // console.log(path);
-              this.imageResizer.resize({
-                  uri: path,
-                  quality: 85,
-                  width: 1280,
-                  height: 1280
-              }).then(uri => {
-                  this.objectImgSelected = uri;
-                  //console.log(this.objectImgSelected);
-                  this.dataurl = this.win.Ionic.WebView.convertFileSrc(this.objectImgSelected);
-                  //console.log('normalizeURL: ' + this.dataurl);
-              })
-              .catch(err => console.log(err));
 
+          this.imageResizer.resize({
+              uri: imageData,
+              folderName: this.file.dataDirectory,
+              quality: 85,
+              width: 1280,
+              height: 1280
+          }).then(result => {
+              this.objectImgSelected = result;
+              console.log(this.objectImgSelected);
+              this.dataurl = this.win.Ionic.WebView.convertFileSrc(this.objectImgSelected);
+              console.log('normalizeURL: ' + this.dataurl);
           })
           .catch(err => console.log(err));
+
 
       }, (err) => {
           this.onAlertError('Imagen no seleccionada', err);

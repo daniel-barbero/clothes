@@ -23,7 +23,7 @@ import { PipesModule } from '../pipes/pipes.module';
 // PLUGINS
 import { Camera } from '@ionic-native/camera';
 import { FileTransfer} from '@ionic-native/file-transfer';
-import { FilePath } from '@ionic-native/file-path';
+import { File } from '@ionic-native/file';
 import { ImageResizer } from '@ionic-native/image-resizer';
 
 @NgModule({
@@ -56,7 +56,7 @@ import { ImageResizer } from '@ionic-native/image-resizer';
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ClothesProvider,
     Camera,
-    FilePath,
+    File,
     FileTransfer,
     ImageResizer
   ]

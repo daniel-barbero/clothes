@@ -22,6 +22,7 @@
     "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/camera": "^4.18.0",
     "@ionic-native/core": "~4.18.0",
+    "@ionic-native/file": "^4.19.0",
     "@ionic-native/file-path": "^4.18.0",
     "@ionic-native/file-transfer": "^4.18.0",
     "@ionic-native/image-resizer": "^4.19.0",
@@ -63,7 +64,8 @@
         "ANDROID_SUPPORT_ANNOTATIONS_VERSION": "27.+"
       },
       "cordova-plugin-ionic-keyboard": {},
-      "info.protonet.imageresizer": {}
+      "info.protonet.imageresizer": {},
+      "cordova-plugin-file": {}
     },
     "platforms": [
       "android"

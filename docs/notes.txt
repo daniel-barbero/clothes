@@ -1,0 +1,12 @@
+ionic start myApp blank
+ionic g 
+
+INSTALL PLUGIN
+ionic cordova plugin add cordova-plugin-advanced-http
+npm install --save @ionic-native/http
+
+UNISTALL PLUGIN
+ionic cordova plugin rm <plugin-name>
+npm uninstall --save @ionic-native/<npm-name-of-plugin>
+
+ ionic cordova resources android

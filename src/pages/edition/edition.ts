@@ -112,10 +112,8 @@ export class EditionPage implements OnInit {
           })
           .catch(err => console.log(err));
 
-
-      }, (err) => {
-          this.onAlertError('Imagen no seleccionada', err);
-      });
+      })
+      .catch(err => this.onAlertError('Imagen no seleccionada', err));
   }
 
   createFileName() {

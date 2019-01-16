@@ -13,6 +13,21 @@ page-list {
         opacity: .1;
     }
 
+    .toolbar-md {
+        min-height: inherit;
+
+        .button-md-secondary.activeButton {
+            background-color: #b48424;
+        }
+        ion-icon {
+            color: #31432a;
+                    
+            &.activeButton {
+                color: #f6a607;
+            }          
+        }
+    }
+
     ion-list {
         margin-bottom: 1rem;
         
@@ -38,6 +53,21 @@ page-list {
                     height: 7rem;
                     border-radius: 0;
                     margin: .075rem;                    
+                }
+            }
+
+            .badge-md {
+                margin-right: 0;
+                border: 1px solid #dcdcdc;
+                color: #c5c5c5;
+                font-weight: 100;
+
+                & + div {
+                    width: 5rem;
+                    display: inline-block;
+                    ion-icon {
+                       float: right;
+                    }
                 }
             }
 

@@ -9,4 +9,7 @@ UNISTALL PLUGIN
 ionic cordova plugin rm <plugin-name>
 npm uninstall --save @ionic-native/<npm-name-of-plugin>
 
- ionic cordova resources android
+ionic cordova resources android
+
+
+ionic cordova run android --prod

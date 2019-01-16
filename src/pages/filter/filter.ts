@@ -58,6 +58,7 @@ export class FilterPage {
                                                 element.size,
                                                 element.category,
                                                 element.colour,
+                                                element.colourBadge,
                                                 element.state, 
                                                 element.img));
                     }

@@ -64,15 +64,15 @@
                 </ion-avatar>
                 
                 <ion-label text-wrap>{{ clothes.brand }}
-                    <ion-badge color="secondary">{{ clothes.colour }}</ion-badge>
                     <span class="block colorTertiary">{{ clothes.store }}</span>
                 </ion-label>
                 
                 <div item-content>
+                    <ion-badge [ngStyle]="{'background-color': clothes.colourBadge}" >{{ clothes.colour }}</ion-badge>
                     <ng-container *ngIf="clothes.state != ''; else SCnote">
-                      <ng-container *ngFor="let star of clothes.state | times">
+                      <div><ng-container *ngFor="let star of clothes.state | times">
                           <ion-icon name="star" color="tertiary" item-end></ion-icon>  
-                      </ng-container>                
+                      </ng-container></div>                
                     </ng-container>
                     <ng-template #SCnote>
                         <ion-badge item-end>SC</ion-badge>

@@ -8,6 +8,7 @@ import { EditionPage } from '../edition/edition';
 import { ClothesProvider } from '../../providers/clothes/clothes';
 import { Clothes } from '../../models/clothes.model';
 
+
 @Component({
   selector: 'page-list',
   templateUrl: 'list.html',
@@ -16,6 +17,8 @@ export class ListPage {
   public urlImg = APPCONFIG.URL_IMG; 
   private listClothes = [];
   public category: string;
+  public ascDesc:boolean = true; // true ASC - false DESC
+  private fieldOrder:string = 'store';
 
   constructor( private loadingController: LoadingController,
               public navCtrl: NavController, 
@@ -58,6 +61,7 @@ export class ListPage {
                                                 element.size,
                                                 element.category,
                                                 element.colour,
+                                                element.colourBadge,
                                                 element.state, 
                                                 element.img));
                     }
@@ -71,6 +75,25 @@ export class ListPage {
               this.onAlertError(error);
           }
       );
+  }
+
+  sortBy(field, reverse, primer){
+      var key = function (x) {return primer ? primer(x[field]) : x[field]};
+  
+      return function (a,b) {
+          var A = key(a), B = key(b);
+          return ( (A < B) ? -1 : ((A > B) ? 1 : 0) ) * [-1,1][+!!reverse];                  
+      }
+  }
+
+  sortList(field, direction){
+      this.fieldOrder = field;
+      this.listClothes = this.listClothes.sort(this.sortBy(field, direction, function(a){return a.toUpperCase()}));
+  }
+
+  changeAscDesc(){
+      this.ascDesc = (this.ascDesc)? false: true;
+      this.listClothes = this.listClothes.sort(this.sortBy(this.fieldOrder, this.ascDesc, function(a){return a.toUpperCase()}));
   }
 
   onEditionClothes(clothes: Clothes, slidingItem: ItemSliding) {

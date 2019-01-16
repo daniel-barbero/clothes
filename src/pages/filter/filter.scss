@@ -36,6 +36,21 @@ page-filter {
                 }
             }
 
+            .badge-md {
+              margin-right: 0;
+              border: 1px solid #dcdcdc;
+              color: #c5c5c5;
+              font-weight: 100;
+
+                & + div {
+                    width: 5rem;
+                    display: inline-block;
+                    ion-icon {
+                      float: right;
+                    }
+                }
+            }
+            
             ion-label {
                 font-size: 1.4rem;
                 line-height: 1.6rem;

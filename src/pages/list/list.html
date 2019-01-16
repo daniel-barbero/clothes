@@ -1,10 +1,33 @@
-se<ion-header>
+<ion-header>
   <ion-navbar><ion-title>{{ category }}</ion-title></ion-navbar>
 </ion-header>
 
 <ion-content>
 
     <p padding text-center *ngIf="listClothes.length == 0">No hay elementos</p>
+    <ion-toolbar *ngIf="listClothes.length != 0">
+        <ion-grid no-padding>
+            <ion-row align-items-center justify-content-center>
+                <button ion-col ion-button (click)="sortList('store',ascDesc)"  
+                  color="secondary" [ngClass]="{'activeButton': fieldOrder == 'store'}">
+                    Tienda
+                </button>
+                <button ion-col ion-button (click)="sortList('colour',ascDesc)"
+                  color="secondary" [ngClass]="{'activeButton': fieldOrder == 'colour'}">
+                    Color
+                </button>
+                <button ion-col ion-button (click)="sortList('state',ascDesc)" 
+                  color="secondary" [ngClass]="{'activeButton': fieldOrder == 'state'}">
+                    Estado
+                </button>
+                <button ion-col ion-button (click)="changeAscDesc()" color="secondary">
+                    <ion-icon name="ios-arrow-up" [ngClass]="{'activeButton': ascDesc == true}"></ion-icon>
+                    &nbsp;&nbsp;
+                    <ion-icon name="ios-arrow-down" [ngClass]="{'activeButton': ascDesc == false}"></ion-icon>
+                </button>
+            </ion-row>
+        </ion-grid>    
+    </ion-toolbar>
 
     <ion-list padding-top [virtualScroll]="listClothes !== ''? listClothes : []" approxItemHeight="70px">
         <ion-item-sliding *virtualItem="let clothes" #slidingItem>
@@ -16,17 +39,19 @@ se<ion-header>
                     </ng-container>
                     <ng-template #defaultImg>
                         <img [src]="urlImg + '/noImg.png'" />
-                    </ng-template>                  
+                    </ng-template>
                 </ion-avatar>
                 
-                <ion-label text-wrap>{{ clothes.brand }}<span class="block colorTertiary">{{ clothes.store }}</span></ion-label>
+                <ion-label text-wrap>{{ clothes.brand }}
+                    <span class="block colorTertiary">{{ clothes.store }}</span>
+                </ion-label>
                 
                 <div item-content>
-                    <ion-badge color="secondary" item-end>{{ clothes.colour }}</ion-badge>
+                    <ion-badge [ngStyle]="{'background-color': clothes.colourBadge}" item-end>{{ clothes.colour }}</ion-badge>
                     <ng-container *ngIf="clothes.state != ''; else SCnote">
-                      <ng-container *ngFor="let star of clothes.state | times">
-                          <ion-icon name="star" color="tertiary" item-end></ion-icon>  
-                      </ng-container>                
+                      <div><ng-container *ngFor="let star of clothes.state | times">
+                          <ion-icon name="star" color="tertiary" item-end></ion-icon>
+                      </ng-container></div>
                     </ng-container>
                     <ng-template #SCnote>
                         <ion-badge item-end>SC</ion-badge>

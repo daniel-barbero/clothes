@@ -6,6 +6,7 @@ export interface ClothesInterface {
     size: string;    
     category: string;
     colour: string;
+    colourBadge: string;
     state: string;
     img: string;
 }
@@ -18,6 +19,7 @@ export class Clothes implements ClothesInterface {
     private _size = '';
     private _category = '';
     private _colour = '';
+    private _colourBadge = '';
     private _state = '';
     private _img = '';
 
@@ -41,12 +43,38 @@ export class Clothes implements ClothesInterface {
 
     get colour(): string { return this._colour; }
     set colour(colour: string) { this._colour = (colour != null) ? colour : ""; }
-
+    
     get state(): string { return this._state; }
     set state(state: string) { this._state = (state != null) ? state : ""; }
 
     get img(): string { return this._img; }
     set img(img: string) { this._img = (img != null) ? img : ""; }
+    
+    get colourBadge(): string { return this._colourBadge; }
+    set colourBadge(colourBadge: string) { 
+      
+        switch(this.colour){
+          case 'white':
+          this._colourBadge = 'snow';
+          break;
+
+          case 'red':
+          this._colourBadge = 'darkred';
+          break;
+
+          case 'blue':
+          this._colourBadge = 'navy';
+          break;
+
+          case 'brown':
+          this._colourBadge = 'saddlebrown';
+          break;
+          
+          default:
+          this._colourBadge = this.colour;
+          break;
+        }
+    }
 
     constructor(
         id?: string,
@@ -56,6 +84,7 @@ export class Clothes implements ClothesInterface {
         size?: string,
         category?: string,
         colour?: string,
+        colourBadge?: string,
         state?: string,
         img?: string,
     ){
@@ -66,6 +95,7 @@ export class Clothes implements ClothesInterface {
         this.size = size;
         this.category = category;
         this.colour = colour;
+        this.colourBadge = colourBadge;
         this.state = state;
         this.img = img;
     }

@@ -26,6 +26,8 @@ import { FileTransfer} from '@ionic-native/file-transfer';
 import { File } from '@ionic-native/file';
 import { ImageResizer } from '@ionic-native/image-resizer';
 
+import { IonicImageViewerModule } from 'ionic-img-viewer';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -39,6 +41,7 @@ import { ImageResizer } from '@ionic-native/image-resizer';
     HttpModule,
     BrowserModule,
     PipesModule,
+    IonicImageViewerModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

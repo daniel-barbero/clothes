@@ -4,14 +4,15 @@
 
 <ion-content>
     <div class="frameImg">
-        <img [src]="urlImg + clothes.img" class="imgMain" />
+        <img [src]="urlImg + clothes.img" class="imgMain" imageViewer />
         <div class="imgDetail">
             <img [src]="urlImg + clothes.img"  />
         </div>
     </div>
+    
+    <p class="font-bold mediumFont colorSecondary" padding>{{ clothes.description }}</p>
 
     <ion-item margin-top>
-        <p class="font-bold colorSecondary" margin-bottom>{{ clothes.description }}</p>
         <ion-badge color="primary">{{ clothes.brand }}</ion-badge>
         <ion-badge color="tertiary">{{ clothes.store }}</ion-badge>  
 

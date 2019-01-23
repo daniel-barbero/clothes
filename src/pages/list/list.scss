@@ -1,4 +1,15 @@
 page-list {
+  ion-navbar {
+      .item-md.item-block .item-inner {
+          ion-label {
+              font-size: 2rem;
+              color: #fff;            
+          }
+
+          border-bottom: none;
+      }
+  }
+
   ion-content {
 
     &:before {
@@ -28,13 +39,12 @@ page-list {
         }
     }
 
-    ion-list {
-        margin-bottom: 1rem;
-        
+    .gridList {
+
         .imgIcon {
             background-repeat: no-repeat;
-            background-size: 2000% 2000%;
-            background-position: center;
+            background-size: 300%;
+            background-position: 65% 35%;
         }
 
         .item-wrapper.active-slide .item-md {
@@ -80,6 +90,16 @@ page-list {
                 margin: 0;
             }
         } 
+    }
+
+    .gridImg {
+        div.imgIcon, 
+        img {
+            height: 11rem;
+            border-radius: 0;
+            margin: .075rem;
+            background-size: 100%;              
+        }
     }
  
   }

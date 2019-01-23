@@ -1,6 +1,6 @@
 import { APPCONFIG } from './../../app/config';
-import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController, AlertController, ItemSliding } from 'ionic-angular';
+import { Component, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { NavController, NavParams, LoadingController, AlertController, ItemSliding, VirtualScroll } from 'ionic-angular';
 
 import { DetailPage } from '../detail/detail';
 import { EditionPage } from '../edition/edition';
@@ -13,25 +13,42 @@ import { Clothes } from '../../models/clothes.model';
   selector: 'page-list',
   templateUrl: 'list.html',
 })
+
 export class ListPage {
   public urlImg = APPCONFIG.URL_IMG; 
   private listClothes = [];
   public category: string;
   public ascDesc:boolean = true; // true ASC - false DESC
   private fieldOrder:string = 'store';
+  public isToggled: boolean;
 
   constructor( private loadingController: LoadingController,
               public navCtrl: NavController, 
               private navParams: NavParams,
               private clothesProvider: ClothesProvider,
-              private alertCtrl : AlertController) {
+              private alertCtrl : AlertController,
+              private cdRef: ChangeDetectorRef) {
+      this.isToggled = true;
+  }
 
+  @ViewChild(VirtualScroll) virtualScroll: VirtualScroll;
+
+  virtualScrollHack() {
+      this.cdRef.detectChanges();
+      this.virtualScroll['_ctrl'].readReady.emit();
+      this.virtualScroll['_ctrl'].writeReady.emit();
   }
 
   ionViewWillEnter() {
       console.log('ionViewWillEnter ListPage');
+
       this.category = this.navParams.data.category;
       this.onLoadData();
+  }
+
+  public changeGrid() {
+      console.log("Toggled: "+ this.isToggled); 
+      this.virtualScrollHack();
   }
 
   onLoadData() {

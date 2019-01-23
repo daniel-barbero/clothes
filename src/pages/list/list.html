@@ -1,5 +1,10 @@
 <ion-header>
-  <ion-navbar><ion-title>{{ category }}</ion-title></ion-navbar>
+  <ion-navbar>
+      <ion-item>
+        <ion-label>{{ category }} ({{listClothes.length }})</ion-label>
+        <ion-toggle [(ngModel)]="isToggled" (ionChange)="changeGrid()" mode="ios" color="tertiary"></ion-toggle>
+      </ion-item>
+  </ion-navbar>
 </ion-header>
 
 <ion-content>
@@ -29,7 +34,7 @@
         </ion-grid>    
     </ion-toolbar>
 
-    <ion-list padding-top [virtualScroll]="listClothes !== ''? listClothes : []" approxItemHeight="70px">
+    <ion-list *ngIf="isToggled" [virtualScroll]="listClothes" approxItemHeight="70px" class="gridList">
         <ion-item-sliding *virtualItem="let clothes" #slidingItem>
             <ion-item (click)="detailClothes(clothes)">
                 <ion-avatar item-start>
@@ -58,7 +63,7 @@
                     </ng-template>
                 </div>
             </ion-item>
-
+            
             <ion-item-options side="right">
                 <button ion-button color="tertiary" (click)="onEditionClothes(clothes, slidingItem)">
                     <ion-icon name="create"></ion-icon> Editar
@@ -70,5 +75,21 @@
             
         </ion-item-sliding>
     </ion-list>
-  
+
+    <ion-list *ngIf="!isToggled" [virtualScroll]="listClothes" approxItemHeight="150px" class="gridImg">
+        <ion-grid no-padding>
+            <ion-row>
+                <ion-col col-6 *virtualItem="let clothes" (click)="detailClothes(clothes)">
+                      <ng-container *ngIf="clothes.imgdetail !='' && clothes.imgdetail !== 'NULL'; else defaultImg">
+                          <div [ngStyle]="{'background-image': 'url(' + urlImg + clothes.img + ')'}" class="imgIcon">
+                            </div>
+                      </ng-container>
+                      <ng-template #defaultImg>
+                          <img [src]="urlImg + '/noImg.png'" />
+                      </ng-template>   
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-list>
+
 </ion-content>

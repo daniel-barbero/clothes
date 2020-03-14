@@ -129,14 +129,22 @@ export class EditionPage implements OnInit {
       loader.present();
 
       let options: FileUploadOptions = {
+          fileKey: 'file', 
           fileName: this.newName,
+          mimeType: "multipart/form-data",
+          chunkedMode: false,
+          headers: {}
       };
-    
+      //console.log('uploadFile ----- '+ this.newName );
+      //console.log(this.objectImgSelected);
       const fileTransfer: FileTransferObject = this.transfer.create();
-      // Use the FileTransfer to upload the image
+
+       //Use the FileTransfer to upload the image
       fileTransfer.upload(this.objectImgSelected, 'http://clothes.danielbarbero.es/public/index.php/api/v1/uploadImage/', options)
       .then(data => {
-          console.log('uploadFile ----- ' + data );
+          //console.log("Code = " + data.responseCode.toString()+"\n");
+          //console.log("Response = " + data.response.toString()+"\n");
+          //console.log("Sent = " + data.bytesSent.toString()+"\n");
           loader.dismiss();
           this.onAlertSuccess('Datos e imagen guardados con éxito');
       }, err => {
